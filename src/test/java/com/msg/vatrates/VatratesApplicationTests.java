@@ -57,6 +57,8 @@ class VatratesApplicationTests {
 		assertTrue(lowest3.get(2).getCountry().equals("Netherlands"));
 
 		System.out.println(euVatRates);
+
+
 	}
 
 }
