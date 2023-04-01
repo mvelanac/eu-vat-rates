@@ -1,10 +1,9 @@
-package com.msg.vatrates;
+package com.msg.vatrates.service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.msg.vatrates.model.EuVatRates;
 import com.msg.vatrates.model.VatRate;
-import com.msg.vatrates.service.VatratesService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-class VatratesApplicationTests {
+class VatratesServiceImplTests {
 
 	@Autowired
 	private VatratesService vatratesService;
@@ -39,7 +38,9 @@ class VatratesApplicationTests {
 
 	@Test
 	void getHigestStandardVatRatesTest() {
+
 		List<VatRate> highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(3));
+
 		assertTrue(highest3.size() == 3);
 		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
 		assertTrue(highest3.get(1).getCountry().equals("Croatia"));
