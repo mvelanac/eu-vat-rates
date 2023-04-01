@@ -3,13 +3,13 @@ package com.msg.vatrates.controller;
 import com.msg.vatrates.model.EuVatRates;
 import com.msg.vatrates.model.VatRate;
 import com.msg.vatrates.service.VatratesService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/v1")
 public class VatratesController {
 
     private VatratesService vatratesService;
@@ -18,13 +18,15 @@ public class VatratesController {
        this.vatratesService = vatratesService;
    }
 
-    @PostMapping("/getHighestStandardVatRates")
-    public List<VatRate> getHighestStandardVatRates(@RequestBody EuVatRates euVatRates){
-        return vatratesService.getHigestStandardVatRates(euVatRates);
+    @PostMapping("/highest-standard-vatrates")
+    public List<VatRate> getHighestStandardVatRates(@RequestBody EuVatRates euVatRates, @RequestParam Optional<Integer> resultNo){
+        Integer n = resultNo.isPresent() ? resultNo.get() : null;
+        return vatratesService.getHigestStandardVatRates(euVatRates, n);
     }
 
-    @PostMapping("/getLowestReducedVatRates")
-    public List<VatRate> getLowestReducedVatRates(@RequestBody EuVatRates euVatRates){
-        return vatratesService.getLowestReducedVatRates(euVatRates);
+    @PostMapping("/lowest-reduced-vatrates")
+    public List<VatRate> getLowestReducedVatRates(@RequestBody EuVatRates euVatRates, @RequestParam Optional<Integer> resultNo){
+        Integer n = resultNo.isPresent() ? resultNo.get() : null;
+        return vatratesService.getLowestReducedVatRates(euVatRates, n);
     }
 }

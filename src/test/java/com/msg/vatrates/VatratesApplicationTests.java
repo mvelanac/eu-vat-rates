@@ -39,7 +39,7 @@ class VatratesApplicationTests {
 
 	@Test
 	void getHigest3StandardVatRatesTest() {
-		List<VatRate> highest3 = vatratesService.getHigestStandardVatRates(euVatRates);
+		List<VatRate> highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(3));
 		assertTrue(highest3.size() == 3);
 		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
 		assertTrue(highest3.get(1).getCountry().equals("Denmark"));
@@ -50,7 +50,7 @@ class VatratesApplicationTests {
 	@Test
 	void getLowest3ReducedVatRates() {
 
-		List<VatRate> lowest3 = vatratesService.getLowestReducedVatRates(euVatRates);
+		List<VatRate> lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(3));
 		assertTrue(lowest3.size() == 3);
 		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
 		assertTrue(lowest3.get(1).getCountry().equals("United Kingdom"));

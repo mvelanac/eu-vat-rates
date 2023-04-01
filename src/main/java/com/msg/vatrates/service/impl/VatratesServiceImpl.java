@@ -17,21 +17,26 @@ import static java.util.stream.Collectors.toCollection;
 @Service
 public class VatratesServiceImpl implements VatratesService {
 
-    public List<VatRate> getLowestReducedVatRates(EuVatRates euVatRates) {
+    public List<VatRate> getLowestReducedVatRates(EuVatRates euVatRates, Integer resultNo) {
+        resultNo = resultNo == null ? 3 : resultNo;
+        resultNo = resultNo > euVatRates.getRates().values().size() ? euVatRates.getRates().values().size() : resultNo;
         List<VatRate> lowestVatRates = euVatRates.getRates().values().stream()
                 .collect(
                         collectingAndThen(toCollection(() -> new TreeSet<>(Comparator.comparing(VatRate::getCountry))), ArrayList::new)
                 )
                 .stream()
                 .sorted(Comparator.comparing(VatRate::getReducedRate))
-                .limit(3).map(n -> n).collect(Collectors.toList());
+                .limit(resultNo).map(n -> n).collect(Collectors.toList());
         return lowestVatRates;
     }
 
-    public List<VatRate> getHigestStandardVatRates(EuVatRates euVatRates) {
+    public List<VatRate> getHigestStandardVatRates(EuVatRates euVatRates, Integer resultNo) {
+        resultNo = resultNo == null ? 3 : resultNo;
+        resultNo = resultNo > euVatRates.getRates().values().size() ? euVatRates.getRates().values().size() : resultNo;
+
         List<VatRate> highestVatRates = euVatRates.getRates().values().stream()
                 .sorted(Comparator.comparing(VatRate::getStandardRate).reversed())
-                .limit(3).map(n -> n).collect(Collectors.toList());
+                .limit(resultNo).map(n -> n).collect(Collectors.toList());
 
         return highestVatRates;
     }
