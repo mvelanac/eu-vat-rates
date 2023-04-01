@@ -42,13 +42,13 @@ class VatratesApplicationTests {
 		List<VatRate> highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(3));
 		assertTrue(highest3.size() == 3);
 		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
-		assertTrue(highest3.get(1).getCountry().equals("Denmark"));
-		assertTrue(highest3.get(2).getCountry().equals("Croatia"));
+		assertTrue(highest3.get(1).getCountry().equals("Croatia"));
+		assertTrue(highest3.get(2).getCountry().equals("Sweden"));
 
 		highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(2));
 		assertTrue(highest3.size() == 2);
 		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
-		assertTrue(highest3.get(1).getCountry().equals("Denmark"));
+		assertTrue(highest3.get(1).getCountry().equals("Croatia"));
 
 		highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(1));
 		assertTrue(highest3.size() == 1);
@@ -61,18 +61,18 @@ class VatratesApplicationTests {
 
 		List<VatRate> lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(3));
 		assertTrue(lowest3.size() == 3);
-		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
-		assertTrue(lowest3.get(1).getCountry().equals("United Kingdom"));
-		assertTrue(lowest3.get(2).getCountry().equals("Netherlands"));
+		assertTrue(lowest3.get(0).getCountry().equals("United Kingdom"));
+		assertTrue(lowest3.get(1).getCountry().equals("Netherlands"));
+		assertTrue(lowest3.get(2).getCountry().equals("Germany"));
 
 		lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(2));
 		assertTrue(lowest3.size() == 2);
-		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
-		assertTrue(lowest3.get(1).getCountry().equals("United Kingdom"));
+		assertTrue(lowest3.get(0).getCountry().equals("United Kingdom"));
+		assertTrue(lowest3.get(1).getCountry().equals("Netherlands"));
 
 		lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(1));
 		assertTrue(lowest3.size() == 1);
-		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
+		assertTrue(lowest3.get(0).getCountry().equals("United Kingdom"));
 
 
 		System.out.println(euVatRates);

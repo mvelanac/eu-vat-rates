@@ -23,7 +23,7 @@
       "country": "Bulgaria",
       "standard_rate": 20.00,
       "reduced_rate": 9.00,
-      "reduced_rate_alt": 8.00,
+      "reduced_rate_alt": false,
       "super_reduced_rate": false,
       "parking_rate": false
     },
@@ -46,7 +46,7 @@
     "DK": {
       "country": "Denmark",
       "standard_rate": 25.00,
-      "reduced_rate": 0.00,
+      "reduced_rate": false,
       "reduced_rate_alt": false,
       "super_reduced_rate": false,
       "parking_rate": false
