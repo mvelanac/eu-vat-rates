@@ -10,16 +10,16 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class VatRate {
+public class VatRateRaw {
 
     @JsonProperty("country")
-    private String country;
+    private Object country;
 
     @JsonProperty("standard_rate")
-    private Double standardRate;
+    private Object standardRate;
 
     @JsonProperty("reduced_rate")
-    private Double reducedRate;
+    private Object reducedRate;
 
     @JsonProperty("reduced_rate_alt")
     private Object reducedRateAlt;

@@ -38,23 +38,42 @@ class VatratesApplicationTests {
 	}
 
 	@Test
-	void getHigest3StandardVatRatesTest() {
+	void getHigestStandardVatRatesTest() {
 		List<VatRate> highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(3));
 		assertTrue(highest3.size() == 3);
 		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
 		assertTrue(highest3.get(1).getCountry().equals("Denmark"));
 		assertTrue(highest3.get(2).getCountry().equals("Croatia"));
 
+		highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(2));
+		assertTrue(highest3.size() == 2);
+		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
+		assertTrue(highest3.get(1).getCountry().equals("Denmark"));
+
+		highest3 = vatratesService.getHigestStandardVatRates(euVatRates, Integer.valueOf(1));
+		assertTrue(highest3.size() == 1);
+		assertTrue(highest3.get(0).getCountry().equals("Hungary"));
+
 		System.out.println(euVatRates);
 	}
 	@Test
-	void getLowest3ReducedVatRates() {
+	void getLowestReducedVatRates() {
 
 		List<VatRate> lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(3));
 		assertTrue(lowest3.size() == 3);
 		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
 		assertTrue(lowest3.get(1).getCountry().equals("United Kingdom"));
 		assertTrue(lowest3.get(2).getCountry().equals("Netherlands"));
+
+		lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(2));
+		assertTrue(lowest3.size() == 2);
+		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
+		assertTrue(lowest3.get(1).getCountry().equals("United Kingdom"));
+
+		lowest3 = vatratesService.getLowestReducedVatRates(euVatRates, Integer.valueOf(1));
+		assertTrue(lowest3.size() == 1);
+		assertTrue(lowest3.get(0).getCountry().equals("Denmark"));
+
 
 		System.out.println(euVatRates);
 

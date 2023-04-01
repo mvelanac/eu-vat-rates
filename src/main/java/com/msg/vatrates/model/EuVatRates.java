@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 @Data
 @Getter
@@ -22,6 +21,6 @@ public class EuVatRates {
     private String disclaimer;
 
     @JsonProperty("rates")
-    private HashMap<String, VatRate> rates;
+    private HashMap<String, VatRateRaw> rates;
 
 }

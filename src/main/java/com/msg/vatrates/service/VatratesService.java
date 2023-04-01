@@ -10,8 +10,8 @@ import java.util.List;
 public interface VatratesService {
 
 
-    public List<VatRate> getLowestReducedVatRates(EuVatRates euVatRates, Integer resultNo);
-
     public List<VatRate> getHigestStandardVatRates(EuVatRates euVatRates, Integer resultNo);
+
+    public List<VatRate> getLowestReducedVatRates(EuVatRates euVatRates, Integer resultNo);
 
     }
