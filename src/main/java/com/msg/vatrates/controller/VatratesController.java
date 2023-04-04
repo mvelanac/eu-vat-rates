@@ -3,6 +3,8 @@ package com.msg.vatrates.controller;
 import com.msg.vatrates.model.EuVatRates;
 import com.msg.vatrates.model.VatRate;
 import com.msg.vatrates.service.VatratesService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +21,16 @@ public class VatratesController {
    }
 
     @PostMapping("/highest-standard-vatrates")
-    public List<VatRate> getHighestStandardVatRates(@RequestBody EuVatRates euVatRates, @RequestParam Optional<Integer> resultNo){
+    public ResponseEntity getHighestStandardVatRates(@RequestBody EuVatRates euVatRates, @RequestParam Optional<Integer> resultNo){
         Integer n = resultNo.isPresent() ? resultNo.get() : null;
-        return vatratesService.getHigestStandardVatRates(euVatRates, n);
+        List<VatRate> response = vatratesService.getHigestStandardVatRates(euVatRates, n);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/lowest-reduced-vatrates")
-    public List<VatRate> getLowestReducedVatRates(@RequestBody EuVatRates euVatRates, @RequestParam Optional<Integer> resultNo){
+    public ResponseEntity getLowestReducedVatRates(@RequestBody EuVatRates euVatRates, @RequestParam Optional<Integer> resultNo){
         Integer n = resultNo.isPresent() ? resultNo.get() : null;
-        return vatratesService.getLowestReducedVatRates(euVatRates, n);
+        List<VatRate> response = vatratesService.getLowestReducedVatRates(euVatRates, n);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
